@@ -20,23 +20,23 @@ TEST:
 
 DATA:
   DATASET_NAME: KITTI # config in datasets/dataset_info.py
-  FILE: datasets/provider_sample_refine.py
-  DATA_ROOT: kitti/data/pickle_data_refine
-  CAR_ONLY: True
-  PEOPLE_ONLY: False
+  MAX_DEPTH: 70
+  FILE: datasets/provider_sample.py
+  DATA_ROOT: kitti/data/pickle_data_pseudo
+  CAR_ONLY: False
+  PEOPLE_ONLY: True
   RTC: True
   WITH_EXTRA_FEAT: False
-  NUM_SAMPLES: 512
+  NUM_SAMPLES: 1024
   STRIDE: (0.1, 0.2, 0.4, 0.8)
   HEIGHT_HALF: (0.1, 0.2, 0.4, 0.8)
-  EXTEND_FROM_DET: False
-
 
 RESUME: False
 NUM_GPUS: 1
-OUTPUT_DIR: 'output/car_refine'
+OUTPUT_DIR: 'output/people_train_pseudo'
 SAVE_SUB_DIR: 'val_nms'
-USE_TFBOARD: True
+USE_TFBOARD: False
 NUM_WORKERS: 4
 FROM_RGB_DET: True
 disp: 100
+IOU_THRESH: 0.5
